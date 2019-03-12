@@ -1886,7 +1886,7 @@ var PDFViewerApplication = {
 };
 var validateFileURL = void 0;
 {
-  var HOSTED_VIEWER_ORIGINS = <%= ENV.fetch("PDFJS_VIEWER_ORIGINS", "").split(",").inspect %>;
+  var HOSTED_VIEWER_ORIGINS = <%= PdfjsViewer.configuration.pdfjs_viewer_origins %>;
   validateFileURL = function validateFileURL(file) {
     if (file === undefined) {
       return;
