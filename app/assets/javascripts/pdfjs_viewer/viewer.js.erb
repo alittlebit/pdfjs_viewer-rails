@@ -1886,7 +1886,7 @@ var PDFViewerApplication = {
 };
 var validateFileURL = void 0;
 {
-  var HOSTED_VIEWER_ORIGINS = <%= PdfjsViewer.configuration.pdfjs_viewer_origins %>;
+  var HOSTED_VIEWER_ORIGINS = <%= PdfjsViewer.configuration.pdfjs_file_origins %>;
   validateFileURL = function validateFileURL(file) {
     if (file === undefined) {
       return;
@@ -1896,9 +1896,11 @@ var validateFileURL = void 0;
       if (HOSTED_VIEWER_ORIGINS.indexOf(viewerOrigin) >= 0) {
         return;
       }
-      var fileOrigin = new URL(file, window.location.href).origin;
-      if (fileOrigin !== viewerOrigin) {
-        throw new Error('file origin does not match viewer\'s');
+      if (<%= PdfjsViewer.configuration.pdfjs_type_origin.to_s == 'local' %>) {
+        var fileOrigin = new URL(file, window.location.href).origin;
+        if (fileOrigin !== viewerOrigin) {
+          throw new Error('file origin does not match viewer\'s');
+        }
       }
     } catch (ex) {
       var message = ex && ex.message;

@@ -15,10 +15,11 @@ module PdfjsViewer
   end
 
   class Configuration
-    attr_accessor :pdfjs_viewer_origins
+    attr_accessor :pdfjs_file_origins, :pdfjs_type_origin
 
     def initialize
-      @pdfjs_viewer_origins = nil
+      @pdfjs_file_origins = nil
+      @pdfjs_type_origin = nil
     end
   end
 
