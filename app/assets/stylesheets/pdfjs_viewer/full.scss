@@ -1,5 +1,10 @@
 #pdfjs_viewer-full {
   .openFile { display: none; }
-
   .bookmark { display: none; }
+  #download { display: none; }
+  #secondaryToolbarToggle { display: none; }
+  #toolbarViewerRight div.verticalToolbarSeparator { display: none; }
+  #editorFreeText { display: none; }
+  #editorInk { display: none; }
+  #editorStamp { display: none; }
 }
