@@ -67,14 +67,14 @@ class ViewerTest < ActionDispatch::IntegrationTest
         errors: 0,
         warnings: 1,
         infos: 5
-      }.each do |level, number|
-        ENV["PDFJS_VIEWER_VERBOSITY"] = level.to_s
+      }.each do |_level, number|
+        ENV["PDFJS_VIEWER_VERBOSITY"] = number.to_s
         capture(:stdout) do
           visit "/"
           click_on "full viewer"
         end
         sleep @time_to_render
-        assert_equal number, page.evaluate_script("PDFJS.verbosity")
+        assert_equal number.to_s, page.evaluate_script("PDFViewerApplicationOptions.get('verbosity')")
       end
     ensure
       ENV.delete("PDFJS_VIEWER_VERBOSITY")

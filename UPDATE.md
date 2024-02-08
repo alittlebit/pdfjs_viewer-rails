@@ -62,6 +62,24 @@ PDFJS.workerSrc = '/pdfjs/web/pdf.worker.js?version=<version_number>';
 PDFJS.cMapUrl = '/pdfjs/web/cmaps/';
 ```
 
+Replace
+
+```html
+verbosity: {
+    value: 1,
+    kind: OptionKind.API
+  },
+```
+
+with
+
+```html
+verbosity: {
+    value: window.pdfjs_viewer_verbosity || 1,
+    kind: OptionKind.API
+  },
+```
+
 The version is added as a query string above so we ensure users will get the matching version of the worker despite caching.
 
 ## `app/assets/stylesheets/pdfjs_viewer/pdfjs/viewer.css`

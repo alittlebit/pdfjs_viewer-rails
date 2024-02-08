@@ -1,4 +1,3 @@
-<meta name="pdfjs_viewer_verbosity" content="<%= ENV.fetch("PDFJS_VIEWER_VERBOSITY", "errors") %>">
 <title><%= title %></title>
 
 <%= stylesheet_link_tag "pdfjs_viewer/application", media: "all" %>
@@ -11,4 +10,7 @@
     window.resourceURL = "<%= pdf_url %>";
   </script>
 <% end %>
+<script type="text/javascript">
+  window.pdfjs_viewer_verbosity = "<%= ENV.fetch("PDFJS_VIEWER_VERBOSITY", "0") %>";
+</script>
 <%= javascript_include_tag "pdfjs_viewer/application" %>
